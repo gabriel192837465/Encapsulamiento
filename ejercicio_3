@@ -1,0 +1,37 @@
+class CuentaBancaria:
+    def __init__(self, titular, saldo, numeroCuenta):
+        self._titular = titular
+        self._saldo = saldo
+        self._numeroCuenta = numeroCuenta
+        
+    def mostrarInfo(self):
+        return (f"titular: {self._titular}, cuenta N°{self._numeroCuenta}, saldo: ${self._saldo}")
+    
+    def depositarDinero(self, dinero):
+        self._saldo += dinero
+        return ("Dinero depositado con exito")
+        
+    def retirarDinero(self, dinero):
+        if (self._saldo >= dinero):
+            self._saldo -= dinero
+            return ("Dinero retirado exitosamente")
+        else:
+            return ("Su saldo es insuficiente")
+        
+if __name__ == "__main__":
+    cuenta1 = CuentaBancaria("Gabriel", 15, 1)
+    
+    print(cuenta1.mostrarInfo())
+    
+    r = int(input("Ingrese 1 para depositar dinero, o 0 para retirar: "))
+    
+    if(r == 1):
+        dinero = int(input("Ingrese el dinero a depositar: "))
+        print(cuenta1.depositarDinero(dinero))
+        print(cuenta1.mostrarInfo())
+    elif(r == 0):
+        dinero = int(input("Ingrese el dinero a retirar: "))
+        print(cuenta1.retirarDinero(dinero))
+        print(cuenta1.mostrarInfo())
+    else:
+        print("Ingreso incorrecto")
