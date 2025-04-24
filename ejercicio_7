@@ -1,0 +1,19 @@
+class Empleado:
+    def __init__(self, nombre, salario, departamento):
+        self._nombre = nombre
+        self._salario = salario
+        self._departamento = departamento
+        
+    def mostrarInfo(self):
+        return (f"Nombre: {self._nombre}, salario: ${self._salario}, departamento: {self._departamento}")
+    
+    def aumentarSalario(self, aumento):
+        return self._salario + self._salario*(aumento/100)
+    
+if __name__ == "__main__":
+    empleado1 = Empleado("Gabriel", 5000, 20)
+    aumento = 25
+    
+    print(empleado1.mostrarInfo())
+    print(f"Tiene un aumento del {aumento}% por fin de año")
+    print(f"nuevo salario: ${empleado1.aumentarSalario(aumento)}")
