@@ -1,0 +1,41 @@
+class Estudiante:
+    def __init__(self, nombre, edad, notas):
+        self._nombre = nombre
+        self._edad = edad
+        self._notas = notas
+        
+    def mostrarInfo(self):
+        return(f""" Estudiante: {self._nombre}, {self._edad} años
+            notas: {self._notas}""")
+        
+    def agregarNota(self, nuevaNota):
+        self._notas.append(nuevaNota)
+        
+    def promedio(self):
+        notas = self._notas
+        suma = 0
+        cantidad = 0
+
+        for nota in notas:
+            suma += nota
+            cantidad += 1
+            
+        promedio = suma/cantidad
+        return promedio
+    
+if __name__ == "__main__":
+    estudiante1 = Estudiante("Gabriel", 17, [10, 9.5, 9, 2])
+    
+    print(estudiante1.mostrarInfo())
+    print(f"promedio: {estudiante1.promedio()}")
+    
+    r = int(input("Ingrese 1 para agregar una nota o 0 para terminar: "))
+    if (r == 1):
+        nuevaNota = int(input("Ingrese la nueva nota: "))
+        estudiante1.agregarNota(nuevaNota)
+        print(estudiante1.mostrarInfo())
+        print(f"Nuevo promedio: {estudiante1.promedio()}")
+    elif(r == 0):
+        print("vuelva pronto")
+    else:
+        print("Ingreso incorrecto")
