@@ -1,1 +1,38 @@
-
+class Producto():
+    def __init__(self, nombre, precio, stock):
+        self._nombre = nombre
+        self._precio = precio
+        self._stock = stock
+        
+    def mostrarInfo(self):
+        return (f"Nombre: {self._nombre} precio: ${self._precio} stock: {self._stock}")
+    
+    def aumentarStock(self, nuevoStock):
+        self._stock += nuevoStock
+        return ("Cantidad ingresada con exito")
+        
+    def restarStock(self, cantidad):
+        stock = self._stock
+        if (stock - cantidad >= 0):
+            self._stock -= cantidad
+            return ("Cantidad retirada con exito")
+        else:
+            return ("Cantidad insuficiente")
+        
+if __name__ == "__main__":
+    producto1 = Producto("manzana ", 250, 50)
+    r = 1
+    print(producto1.mostrarInfo())
+    
+    while(r != 0):
+        r = int(input("Ingrese 1 para aumentar stock, 2 para disminuirlo o 0 para terminar: "))
+        
+        if (r == 1):
+            cantidad = int(input("Ingrese la cantidad a aumentar: "))
+            print(producto1.aumentarStock(cantidad))
+            
+        if (r == 2):
+            cantidad = int(input("Ingrese la cantidad a retirar: "))
+            print(producto1.restarStock(cantidad))
+    
+    print(producto1.mostrarInfo())
