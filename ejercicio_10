@@ -5,9 +5,9 @@ class Circulo():
     def setRadio(self, nuevoRadio):
         if (nuevoRadio >= 0):
             self._radio = nuevoRadio
-            return ("Radio ingresado con exito")
+            return True
         else:
-            return ("El radio no puede ser negativo")
+            return False
         
     def calcularArea(self):
         area = 3.1416*(self._radio**2)
@@ -24,7 +24,11 @@ class Circulo():
 if __name__ == "__main__":
     circulo1 = Circulo(0)
     radio = int(input("Ingrese el radio del circulo: "))
-    circulo1.setRadio(radio)
-    circulo1.mostrarInfo()
-    circulo1.calcularArea()
-    circulo1.calcularCircunferencia()
+    
+    if (circulo1.setRadio(radio)):
+        print(f"""Radio ingresado con exito
+        {circulo1.mostrarInfo()}
+        Área: {circulo1.calcularArea()}
+        Circunferencia: {circulo1.calcularCircunferencia()}""")
+    else:
+        print("El radio no puede ser negativo")
